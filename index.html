@@ -7,7 +7,7 @@
 :root{font-family:system-ui,-apple-system,"Microsoft YaHei",sans-serif;color:#18344a;background:#eff9fb}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,#fff5c8,transparent 35%),radial-gradient(circle at 85% 90%,#c9f4e6,transparent 40%),#eff9fb}.wrap{max-width:1140px;margin:auto;padding:24px 16px 40px}header{text-align:center}h1{margin:0;font-size:clamp(28px,5vw,44px);letter-spacing:.04em}header p{margin:8px 0 22px;color:#527083;font-size:16px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:18px;align-items:start}.card{background:#fff;border:3px solid #d5eee9;border-radius:24px;box-shadow:0 9px 0 #cbe9e3,0 20px 35px #175e6940;padding:14px}.game-top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:2px 5px 12px;font-weight:800}.live{color:#ec6d77}.dot{display:inline-block;width:10px;height:10px;background:#f26b7e;border-radius:50%;margin-right:6px;box-shadow:0 0 0 4px #ffe7ec}.board{width:100%;display:block;border-radius:15px;background:#dff4e8;touch-action:manipulation}.controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.controls button{border:0;border-radius:15px;padding:12px 18px;font:800 16px inherit;cursor:pointer;min-height:48px;color:#163c4a;background:#e1f6ed;box-shadow:0 4px 0 #b6dcd0;transition:transform .1s}.controls button:hover{transform:translateY(-2px)}.controls button:active{transform:translateY(3px);box-shadow:0 1px 0 #b6dcd0}.controls .primary{background:#ffdc72;box-shadow:0 4px 0 #dfb95b}.controls button:focus-visible{outline:3px solid #287cab;outline-offset:3px}.hint{font-size:14px;color:#557487;margin:14px 4px 3px;line-height:1.6}.sidebar h2{font-size:20px;margin:4px 4px 12px}.score{display:flex;align-items:center;gap:9px;padding:9px 8px;border-radius:12px;background:#f2faf7;margin:5px 0;font-weight:700}.score:first-of-type{background:#fff4cc}.badge{width:13px;height:13px;flex:none;border-radius:50%;border:2px solid #ffffffaa}.name{flex:1}.number{color:#557487;font-variant-numeric:tabular-nums}.status{font-size:13px;color:#718a96}.rule{margin-top:18px;padding:12px;border-radius:14px;background:#eaf6ff;line-height:1.6;font-size:14px}.rule strong{display:block;font-size:16px}.event{margin:13px 4px 2px;color:#526b7e;font-size:14px;min-height:42px;line-height:1.5}@media(max-width:760px){.layout{grid-template-columns:1fr}.sidebar{display:grid;grid-template-columns:1fr 1fr;column-gap:12px}.sidebar h2,.rule,.event{grid-column:1/-1}.score{margin:3px 0}.wrap{padding:16px 10px 30px}.card{padding:10px;border-radius:18px}.controls button{flex:1}}
 </style>
 </head>
-<body><main class="wrap"><header><h1>🐍 小蛇运动会</h1><p>3 条 AI 小蛇一起比赛，谁先长到 30 格谁赢！</p></header><div class="layout"><section class="card" aria-label="AI 小蛇比赛"><div class="game-top"><span class="live"><i class="dot" aria-hidden="true"></i><span id="gameState">比赛进行中</span></span><span id="clock">第 0 回合</span></div><canvas id="board" width="768" height="576" class="board" role="img" aria-label="AI 贪吃蛇比赛场地，排名在右侧显示"></canvas><div class="controls"><button id="pause" class="primary" type="button">⏸ 暂停</button><button id="speed" type="button">🚶 速度：普通</button><button id="reset" type="button">🔄 重新比赛</button></div><p class="hint">彩色长条是小蛇，彩色圆点是水果。小蛇自己会玩，你可以暂停、调速度或重新比赛。</p></section><aside class="card sidebar"><h2>🏆 长度排行榜</h2><div id="scores" aria-live="off"></div><div class="rule"><strong>怎么玩？</strong>🍎 吃自己颜色的水果长 2 格；吃其他颜色长 1 格。<br>🐍 大蛇碰到小蛇，小蛇变成它自己颜色的水果。<br>💥 碰到不比自己小的蛇，就会出局，稍后重新开始。<br>🏆 先长到 30 格的小蛇获胜！</div><div class="event" id="event" aria-live="polite">比赛开始啦！为你喜欢的小蛇加油！</div></aside></div></main>
+<body><main class="wrap"><header><h1>🐍 小蛇运动会</h1><p>一条小蛇、一个蛇头，长到 30 格就赢！</p></header><div class="layout"><section class="card" aria-label="AI 小蛇比赛"><div class="game-top"><span class="live"><i class="dot" aria-hidden="true"></i><span id="gameState">比赛进行中</span></span><span id="clock">第 0 回合</span></div><canvas id="board" width="768" height="576" class="board" role="img" aria-label="一条 AI 小蛇、一个蛇头的比赛场地，长度在右侧显示"></canvas><div class="controls"><button id="pause" class="primary" type="button">⏸ 暂停</button><button id="speed" type="button">🚶 速度：普通</button><button id="reset" type="button">🔄 重新比赛</button></div><p class="hint">彩色长条是小蛇，彩色圆点是水果。小蛇自己会玩，你可以暂停、调速度或重新比赛。</p></section><aside class="card sidebar"><h2>🏆 小蛇长度</h2><div id="scores" aria-live="off"></div><div class="rule"><strong>怎么玩？</strong>🐍 只有一条小蛇、一个蛇头。蛇头碰到自己的身体，就咬一口、长 2 格，身体不断开！<br>🍎 吃自己颜色的水果长 2 格；吃其他颜色长 1 格。<br>🏆 长到 30 格就获胜！</div><div class="event" id="event" aria-live="polite">比赛开始啦！为小蛇加油！</div></aside></div></main>
 <script>
 'use strict';
 (() => {
@@ -19,7 +19,7 @@
   const key=p=>`${p.x},${p.y}`;
   const inside=p=>p.x>=0&&p.y>=0&&p.x<W&&p.y<H;
   const rand=n=>Math.floor(Math.random()*n);
-  let snakes=[],foods=[],turn=0,paused=false,speedIndex=1,timer=null,winner=null;
+  let snakes=[],foods=[],turn=0,paused=false,speedIndex=1,timer=null,winner=null,bites=0;
   const speeds=[300,185,110],speedLabels=['慢慢走','普通','飞快跑'];
   const scoreEl=document.getElementById('scores'),eventEl=document.getElementById('event');
   function occupied(){return new Set(snakes.flatMap(s=>s.body.map(key)));}
@@ -37,8 +37,8 @@
   function spawn(s){
     const blocked=occupied(),foodKeys=new Set(foods.map(key));
     for(let attempt=0;attempt<100;attempt++){
-      const p={x:2+rand(W-4),y:2+rand(H-4)},dir=directions[rand(4)];
-      const body=Array.from({length:4},(_,i)=>({x:p.x-dir.x*i,y:p.y-dir.y*i}));
+      const p={x:5+rand(W-10),y:5+rand(H-10)},dir=directions[rand(4)];
+      const body=Array.from({length:6},(_,i)=>({x:p.x-dir.x*i,y:p.y-dir.y*i}));
       if(body.some(q=>!inside(q)||blocked.has(key(q))||foodKeys.has(key(q))))continue;
       if(snakes.some(other=>other.body.length&&Math.abs(other.body[0].x-p.x)+Math.abs(other.body[0].y-p.y)<5))continue;
       s.body=body;s.dir=dir;s.wait=0;s.pending=0;return true;
@@ -46,11 +46,11 @@
     return false;
   }
   function reset(){
-    clearInterval(timer);turn=0;foods=[];paused=false;speedIndex=1;winner=null;
-    snakes=names.map((name,i)=>({name,color:colors[i],body:[],dir:directions[i%4],score:0,wait:0,pending:0}));
-    snakes.forEach(spawn);
+    clearInterval(timer);turn=0;foods=[];paused=false;speedIndex=1;winner=null;bites=0;
+    snakes=[{name:names[0],color:colors[0],body:[],dir:directions[0],score:0,wait:0,pending:0}];
+    spawn(snakes[0]);
     for(let i=0;i<FOOD_COUNT;i++)addFood(colors[i%colors.length]);
-    eventEl.textContent='比赛开始啦！为你喜欢的小蛇加油！';
+    eventEl.textContent='比赛开始啦！为小蛇加油！';
     syncButtons();render();startTimer();
   }
   function riskArea(start,blocked){
@@ -64,6 +64,12 @@
   }
   function choose(s){
     const head=s.body[0],blocked=occupied(),own=new Set(s.body.map(key));
+    // A bite touches the body without moving the head onto an occupied square.
+    // This keeps exactly one head and a continuous, non-overlapping body.
+    if(turn%8===0&&s.body.length<WIN_LENGTH){
+      const bite=directions.find(d=>s.body.slice(2,-1).some(q=>q.x===head.x+d.x&&q.y===head.y+d.y));
+      if(bite)return {bite:true};
+    }
     if(!s.pending)blocked.delete(key(s.body[s.body.length-1]));
     const options=[];
     for(const d of directions){
@@ -90,43 +96,50 @@
     for(const p of old)if(!blocked.has(key(p))&&!fruit.has(key(p))){foods.push({...p,color:s.color});fruit.add(key(p));}
     eventEl.textContent=message;
   }
+  function growTail(s){
+    while(s.pending>0){
+      const tail=s.body[s.body.length-1],prev=s.body[s.body.length-2];
+      const candidates=[{x:tail.x+(tail.x-prev.x),y:tail.y+(tail.y-prev.y)},...directions.map(d=>({x:tail.x+d.x,y:tail.y+d.y}))];
+      const blocked=occupied(),fruit=new Set(foods.map(key));
+      const extra=candidates.find(p=>inside(p)&&!blocked.has(key(p))&&!fruit.has(key(p)));
+      if(!extra)break;
+      s.body.push(extra);s.pending--;
+    }
+  }
   function tick(){
     if(winner)return;
     turn++;
-    for(const s of snakes){
-      if(!s.body.length){if(s.wait>0)s.wait--;else spawn(s);continue;}
+    const s=snakes[0];
+    if(!s.body.length){if(s.wait>0)s.wait--;else spawn(s);}
+    else {
       const move=choose(s);
-      if(!move){dropSnake(s,`💫 ${s.name}撞到了！变成水果，等会儿再回来。`);continue;}
-      s.dir=move.d;
-      const rival=snakes.find(other=>other!==s&&other.body.some(q=>key(q)===key(move.p)));
-      if(rival){
-        if(s.body.length>rival.body.length)dropSnake(rival,`🐍 ${s.name}比${rival.name}大！${rival.name}变成水果啦！`);
-        else {dropSnake(s,`💫 ${s.name}碰到更大的蛇，变成水果啦！`);continue;}
+      if(!move){dropSnake(s,`💫 ${s.name}没路走啦，等会儿再来！`);}
+      else if(move.bite){
+        bites++;s.score+=2;s.pending+=2;growTail(s);
+        eventEl.textContent=`🐍 ${s.name}咬到自己的身体，长 2 格！现在 ${s.body.length} 格。`;
+      }else{
+        s.dir=move.d;
+        const keepsTail=s.pending>0||foods.some(f=>key(f)===key(move.p));
+        if(s.body.slice(0,keepsTail?undefined:-1).some(q=>key(q)===key(move.p))){
+          // A blocked square is a bite, not a second head or a death.
+          bites++;s.score+=2;s.pending+=2;growTail(s);
+          eventEl.textContent=`🐍 ${s.name}咬到自己的身体，长 2 格！`;
+        }else{
+          s.body.unshift(move.p);
+          const foodAt=foods.findIndex(f=>key(f)===key(move.p));
+          let gained=0;
+          if(foodAt>=0){
+            const fruit=foods.splice(foodAt,1)[0];
+            gained=fruit.color===s.color?2:1;
+            s.score+=gained;s.pending+=gained;
+          }
+          if(s.pending>0)s.pending--;
+          else s.body.pop();
+          growTail(s);
+          if(gained)eventEl.textContent=`🍎 ${s.name}吃到${gained===2?'自己颜色':'其他颜色'}的水果，长了 ${gained} 格！现在 ${s.body.length} 格。`;
+        }
       }
-      const keepsTail=s.pending>0||foods.some(f=>key(f)===key(move.p));
-      if(s.body.slice(0,keepsTail?undefined:-1).some(q=>key(q)===key(move.p))){dropSnake(s,`💫 ${s.name}碰到了自己，变成水果啦！`);continue;}
-      s.body.unshift(move.p);
-      const foodAt=foods.findIndex(f=>key(f)===key(move.p));
-      let gained=0;
-      if(foodAt>=0){
-        const fruit=foods.splice(foodAt,1)[0];
-        gained=fruit.color===s.color?2:1;
-        s.score+=gained;s.pending+=gained;
-      }
-      if(s.pending>0)s.pending--;
-      else s.body.pop();
-      // Usually both new segments fit immediately. If the tail is boxed in,
-      // save the extra growth for the next safe move instead of overlapping.
-      while(s.pending>0){
-        const tail=s.body[s.body.length-1],prev=s.body[s.body.length-2];
-        const candidates=[{x:tail.x+(tail.x-prev.x),y:tail.y+(tail.y-prev.y)},...directions.map(d=>({x:tail.x+d.x,y:tail.y+d.y}))];
-        const blocked=occupied(),fruit=new Set(foods.map(key));
-        const extra=candidates.find(p=>inside(p)&&!blocked.has(key(p))&&!fruit.has(key(p)));
-        if(!extra)break;
-        s.body.push(extra);s.pending--;
-      }
-      if(gained)eventEl.textContent=`🍎 ${s.name}吃到${gained===2?'自己颜色':'其他颜色'}的水果，长了 ${gained} 格！现在 ${s.body.length} 格。`;
-      if(s.body.length>=WIN_LENGTH){winner=s.name;paused=true;clearInterval(timer);eventEl.textContent=`🏆 ${s.name}赢啦！它长到了 ${s.body.length} 格！点「重新比赛」再玩一次。`;break;}
+      if(s.body.length>=WIN_LENGTH){winner=s.name;paused=true;clearInterval(timer);eventEl.textContent=`🏆 ${s.name}赢啦！它长到了 ${s.body.length} 格！点「重新比赛」再玩一次。`;}
     }
     while(foods.length<FOOD_COUNT){const before=foods.length;addFood();if(foods.length===before)break;}
     syncButtons();render();
@@ -174,7 +187,7 @@
   document.getElementById('speed').addEventListener('click',()=>{speedIndex=(speedIndex+1)%speeds.length;syncButtons();startTimer();});
   document.getElementById('reset').addEventListener('click',reset);
   // Read-only snapshot and deterministic stepping for automated checks.
-  window.__arena={snapshot:()=>({turn,paused,winner,speed:speedLabels[speedIndex],snakes:snakes.map(s=>({name:s.name,score:s.score,length:s.body.length,wait:s.wait,body:s.body.map(p=>({...p}))})),foods:foods.map(p=>({...p}))}),step:tick,reset};
+  window.__arena={snapshot:()=>({turn,paused,winner,bites,speed:speedLabels[speedIndex],snakes:snakes.map(s=>({name:s.name,color:s.color,score:s.score,pending:s.pending,length:s.body.length,wait:s.wait,body:s.body.map(p=>({...p}))})),foods:foods.map(p=>({...p}))}),step:tick,reset};
   reset();
 })();
 </script></body></html>
