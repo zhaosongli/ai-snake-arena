@@ -7,7 +7,7 @@
 :root{font-family:system-ui,-apple-system,"Microsoft YaHei",sans-serif;color:#18344a;background:#eff9fb}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,#fff5c8,transparent 35%),radial-gradient(circle at 85% 90%,#c9f4e6,transparent 40%),#eff9fb}.wrap{max-width:1140px;margin:auto;padding:24px 16px 40px}header{text-align:center}h1{margin:0;font-size:clamp(28px,5vw,44px);letter-spacing:.04em}header p{margin:8px 0 22px;color:#527083;font-size:16px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:18px;align-items:start}.card{background:#fff;border:3px solid #d5eee9;border-radius:24px;box-shadow:0 9px 0 #cbe9e3,0 20px 35px #175e6940;padding:14px}.game-top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:2px 5px 12px;font-weight:800}.live{color:#ec6d77}.dot{display:inline-block;width:10px;height:10px;background:#f26b7e;border-radius:50%;margin-right:6px;box-shadow:0 0 0 4px #ffe7ec}.board{width:100%;display:block;border-radius:15px;background:#dff4e8;touch-action:manipulation}.controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.controls button{border:0;border-radius:15px;padding:12px 18px;font:800 16px inherit;cursor:pointer;min-height:48px;color:#163c4a;background:#e1f6ed;box-shadow:0 4px 0 #b6dcd0;transition:transform .1s}.controls button:hover{transform:translateY(-2px)}.controls button:active{transform:translateY(3px);box-shadow:0 1px 0 #b6dcd0}.controls .primary{background:#ffdc72;box-shadow:0 4px 0 #dfb95b}.controls button:focus-visible{outline:3px solid #287cab;outline-offset:3px}.hint{font-size:14px;color:#557487;margin:14px 4px 3px;line-height:1.6}.sidebar h2{font-size:20px;margin:4px 4px 12px}.score{display:flex;align-items:center;gap:9px;padding:9px 8px;border-radius:12px;background:#f2faf7;margin:5px 0;font-weight:700}.score:first-of-type{background:#fff4cc}.badge{width:13px;height:13px;flex:none;border-radius:50%;border:2px solid #ffffffaa}.name{flex:1}.number{color:#557487;font-variant-numeric:tabular-nums}.status{font-size:13px;color:#718a96}.rule{margin-top:18px;padding:12px;border-radius:14px;background:#eaf6ff;line-height:1.6;font-size:14px}.rule strong{display:block;font-size:16px}.event{margin:13px 4px 2px;color:#526b7e;font-size:14px;min-height:42px;line-height:1.5}@media(max-width:760px){.layout{grid-template-columns:1fr}.sidebar{display:grid;grid-template-columns:1fr 1fr;column-gap:12px}.sidebar h2,.rule,.event{grid-column:1/-1}.score{margin:3px 0}.wrap{padding:16px 10px 30px}.card{padding:10px;border-radius:18px}.controls button{flex:1}}
 </style>
 </head>
-<body><main class="wrap"><header><h1>🐍 小蛇运动会</h1><p>3 条 AI 小蛇一起比赛，谁先长到 30 格谁赢！</p></header><div class="layout"><section class="card" aria-label="AI 小蛇比赛"><div class="game-top"><span class="live"><i class="dot" aria-hidden="true"></i><span id="gameState">比赛进行中</span></span><span id="clock">第 0 回合</span></div><canvas id="board" width="768" height="576" class="board" role="img" aria-label="AI 贪吃蛇比赛场地，排名在右侧显示"></canvas><div class="controls"><button id="pause" class="primary" type="button">⏸ 暂停</button><button id="speed" type="button">🚶 速度：普通</button><button id="reset" type="button">🔄 重新比赛</button></div><p class="hint">彩色长条是小蛇，红色圆点是水果。小蛇自己会玩，你可以暂停、调速度或重新比赛。</p></section><aside class="card sidebar"><h2>🏆 长度排行榜</h2><div id="scores" aria-live="off"></div><div class="rule"><strong>怎么玩？</strong>🍎 吃 1 个水果，长 1 格。<br>🐍 大蛇碰到小蛇，小蛇变成水果。<br>💥 碰到不比自己小的蛇，就会出局，稍后重新开始。<br>🏆 先长到 30 格的小蛇获胜！</div><div class="event" id="event" aria-live="polite">比赛开始啦！为你喜欢的小蛇加油！</div></aside></div></main>
+<body><main class="wrap"><header><h1>🐍 小蛇运动会</h1><p>3 条 AI 小蛇一起比赛，谁先长到 30 格谁赢！</p></header><div class="layout"><section class="card" aria-label="AI 小蛇比赛"><div class="game-top"><span class="live"><i class="dot" aria-hidden="true"></i><span id="gameState">比赛进行中</span></span><span id="clock">第 0 回合</span></div><canvas id="board" width="768" height="576" class="board" role="img" aria-label="AI 贪吃蛇比赛场地，排名在右侧显示"></canvas><div class="controls"><button id="pause" class="primary" type="button">⏸ 暂停</button><button id="speed" type="button">🚶 速度：普通</button><button id="reset" type="button">🔄 重新比赛</button></div><p class="hint">彩色长条是小蛇，彩色圆点是水果。小蛇自己会玩，你可以暂停、调速度或重新比赛。</p></section><aside class="card sidebar"><h2>🏆 长度排行榜</h2><div id="scores" aria-live="off"></div><div class="rule"><strong>怎么玩？</strong>🍎 吃自己颜色的水果长 2 格；吃其他颜色长 1 格。<br>🐍 大蛇碰到小蛇，小蛇变成它自己颜色的水果。<br>💥 碰到不比自己小的蛇，就会出局，稍后重新开始。<br>🏆 先长到 30 格的小蛇获胜！</div><div class="event" id="event" aria-live="polite">比赛开始啦！为你喜欢的小蛇加油！</div></aside></div></main>
 <script>
 'use strict';
 (() => {
@@ -33,7 +33,7 @@
     }
     return candidates.length?candidates[rand(candidates.length)]:null;
   }
-  function addFood(){const p=freeCell();if(p)foods.push(p);}
+  function addFood(color=colors[rand(colors.length)]){const p=freeCell();if(p)foods.push({...p,color});}
   function spawn(s){
     const blocked=occupied(),foodKeys=new Set(foods.map(key));
     for(let attempt=0;attempt<100;attempt++){
@@ -41,15 +41,15 @@
       const body=Array.from({length:4},(_,i)=>({x:p.x-dir.x*i,y:p.y-dir.y*i}));
       if(body.some(q=>!inside(q)||blocked.has(key(q))||foodKeys.has(key(q))))continue;
       if(snakes.some(other=>other.body.length&&Math.abs(other.body[0].x-p.x)+Math.abs(other.body[0].y-p.y)<5))continue;
-      s.body=body;s.dir=dir;s.wait=0;return true;
+      s.body=body;s.dir=dir;s.wait=0;s.pending=0;return true;
     }
     return false;
   }
   function reset(){
     clearInterval(timer);turn=0;foods=[];paused=false;speedIndex=1;winner=null;
-    snakes=names.map((name,i)=>({name,color:colors[i],body:[],dir:directions[i%4],score:0,wait:0}));
+    snakes=names.map((name,i)=>({name,color:colors[i],body:[],dir:directions[i%4],score:0,wait:0,pending:0}));
     snakes.forEach(spawn);
-    for(let i=0;i<FOOD_COUNT;i++)addFood();
+    for(let i=0;i<FOOD_COUNT;i++)addFood(colors[i%colors.length]);
     eventEl.textContent='比赛开始啦！为你喜欢的小蛇加油！';
     syncButtons();render();startTimer();
   }
@@ -64,16 +64,17 @@
   }
   function choose(s){
     const head=s.body[0],blocked=occupied(),own=new Set(s.body.map(key));
-    blocked.delete(key(s.body[s.body.length-1]));
+    if(!s.pending)blocked.delete(key(s.body[s.body.length-1]));
     const options=[];
     for(const d of directions){
       if(d.x===-s.dir.x&&d.y===-s.dir.y)continue;
       const p={x:head.x+d.x,y:head.y+d.y},k=key(p);
-      if(!inside(p)||own.has(k)&&k!==key(s.body[s.body.length-1]))continue;
+      const fruitHere=foods.some(f=>key(f)===k);
+      if(!inside(p)||own.has(k)&&(k!==key(s.body[s.body.length-1])||s.pending||fruitHere))continue;
       const rival=snakes.find(other=>other!==s&&other.body.some(q=>key(q)===k));
       if(rival&&rival.body.length>=s.body.length)continue;
       if(blocked.has(k)&&!rival)continue;
-      const distance=Math.min(...foods.map(f=>Math.abs(f.x-p.x)+Math.abs(f.y-p.y)));
+      const distance=Math.min(...foods.map(f=>Math.abs(f.x-p.x)+Math.abs(f.y-p.y)-(f.color===s.color?1.5:0)));
       const safe=new Set(blocked);
       if(rival)rival.body.forEach(q=>safe.delete(key(q)));
       const area=riskArea(p,safe);
@@ -84,9 +85,9 @@
     return options[0]||null;
   }
   function dropSnake(s,message){
-    const old=s.body;s.body=[];s.score=0;s.wait=8;
+    const old=s.body;s.body=[];s.score=0;s.wait=8;s.pending=0;
     const blocked=occupied(),fruit=new Set(foods.map(key));
-    for(const p of old)if(!blocked.has(key(p))&&!fruit.has(key(p))){foods.push({...p});fruit.add(key(p));}
+    for(const p of old)if(!blocked.has(key(p))&&!fruit.has(key(p))){foods.push({...p,color:s.color});fruit.add(key(p));}
     eventEl.textContent=message;
   }
   function tick(){
@@ -102,11 +103,29 @@
         if(s.body.length>rival.body.length)dropSnake(rival,`🐍 ${s.name}比${rival.name}大！${rival.name}变成水果啦！`);
         else {dropSnake(s,`💫 ${s.name}碰到更大的蛇，变成水果啦！`);continue;}
       }
-      if(s.body.slice(0,-1).some(q=>key(q)===key(move.p))){dropSnake(s,`💫 ${s.name}碰到了自己，变成水果啦！`);continue;}
+      const keepsTail=s.pending>0||foods.some(f=>key(f)===key(move.p));
+      if(s.body.slice(0,keepsTail?undefined:-1).some(q=>key(q)===key(move.p))){dropSnake(s,`💫 ${s.name}碰到了自己，变成水果啦！`);continue;}
       s.body.unshift(move.p);
       const foodAt=foods.findIndex(f=>key(f)===key(move.p));
-      if(foodAt>=0){foods.splice(foodAt,1);s.score++;eventEl.textContent=`🍎 ${s.name}吃到了水果！长到 ${s.body.length} 格啦！`;}
+      let gained=0;
+      if(foodAt>=0){
+        const fruit=foods.splice(foodAt,1)[0];
+        gained=fruit.color===s.color?2:1;
+        s.score+=gained;s.pending+=gained;
+      }
+      if(s.pending>0)s.pending--;
       else s.body.pop();
+      // Usually both new segments fit immediately. If the tail is boxed in,
+      // save the extra growth for the next safe move instead of overlapping.
+      while(s.pending>0){
+        const tail=s.body[s.body.length-1],prev=s.body[s.body.length-2];
+        const candidates=[{x:tail.x+(tail.x-prev.x),y:tail.y+(tail.y-prev.y)},...directions.map(d=>({x:tail.x+d.x,y:tail.y+d.y}))];
+        const blocked=occupied(),fruit=new Set(foods.map(key));
+        const extra=candidates.find(p=>inside(p)&&!blocked.has(key(p))&&!fruit.has(key(p)));
+        if(!extra)break;
+        s.body.push(extra);s.pending--;
+      }
+      if(gained)eventEl.textContent=`🍎 ${s.name}吃到${gained===2?'自己颜色':'其他颜色'}的水果，长了 ${gained} 格！现在 ${s.body.length} 格。`;
       if(s.body.length>=WIN_LENGTH){winner=s.name;paused=true;clearInterval(timer);eventEl.textContent=`🏆 ${s.name}赢啦！它长到了 ${s.body.length} 格！点「重新比赛」再玩一次。`;break;}
     }
     while(foods.length<FOOD_COUNT){const before=foods.length;addFood();if(foods.length===before)break;}
@@ -118,7 +137,8 @@
     for(let y=0;y<H;y++)for(let x=0;x<W;x++)if((x+y)%2===0){ctx.fillStyle='#d9efdf';ctx.fillRect(x*S,y*S,S,S);}
     for(const f of foods){
       const x=f.x*S+S/2,y=f.y*S+S/2;
-      ctx.fillStyle='#df3f50';ctx.beginPath();ctx.arc(x,y+2,10,0,Math.PI*2);ctx.fill();
+      ctx.fillStyle=f.color;ctx.beginPath();ctx.arc(x,y+2,10,0,Math.PI*2);ctx.fill();
+      ctx.strokeStyle='#ffffff';ctx.lineWidth=2;ctx.stroke();
       ctx.fillStyle='#57a867';ctx.beginPath();ctx.ellipse(x+4,y-9,5,3,-.5,0,Math.PI*2);ctx.fill();
       ctx.fillStyle='#fff9';ctx.beginPath();ctx.arc(x-2,y,2,0,Math.PI*2);ctx.fill();
     }
